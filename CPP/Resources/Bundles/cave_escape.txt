@@ -1,11 +1,17 @@
 BITMAP,Logo,logo.png
+BITMAP,LogoPurple,logo_purple.png
 BITMAP,Player,player.png,75,42,4,1,4
+BITMAP,PlayerPurple,player_purple.png,75,42,4,1,4
 ANIM,PlayerAnimations,player_animations.txt
 BITMAP,Foreground,foreground.png,864,105,3,1,3
+BITMAP,ForegroundPurple,foreground_purple.png,864,105,3,1,3
 ANIM,ForegroundAnimations,foreground_animations.txt
 BITMAP,DownPole,down_pole.png
+BITMAP,DownPolePurple,down_pole_purple.png
 BITMAP,UpPole,up_pole.png
+BITMAP,UpPolePurple,up_pole_purple.png
 BITMAP,Background,background.png
 BITMAP,Foreroof,foreroof.png
+BITMAP,ForeroofPurple,foreroof_purple.png
 FONT,GameFont,demolition.otf,21
 MUSIC,GameMusic,magical_night.ogg
