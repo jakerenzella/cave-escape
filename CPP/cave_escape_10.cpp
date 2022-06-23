@@ -30,6 +30,12 @@ enum player_state
     PLAY
 };
 
+enum game_color
+{
+    PURPLE,
+    ORANGE
+};
+
 typedef struct player_data
 {
     player_state state;
@@ -43,9 +49,11 @@ typedef struct game_data
     scene_data scene;
     pole_data poles[NUM_POLES];
     player_data player;
+    game_color color;
+
 } game_data;
 
-scene_data get_new_scene()
+scene_data get_new_scene(game_color color)
 {
     scene_data result;
 
@@ -55,6 +63,7 @@ scene_data get_new_scene()
     sprite_set_y(result.background, 0);
     sprite_set_dx(result.background, BACKGROUND_SCROLL_SPEED);
 
+    // result.foreground_purple = create_sprite(bitmap_named("ForegroundPurple"), animation_script_named("ForegroundAnimations"));
     result.foreground = create_sprite(bitmap_named("Foreground"), animation_script_named("ForegroundAnimations"));
 
     sprite_set_x(result.foreground, 0);
@@ -62,6 +71,11 @@ scene_data get_new_scene()
     sprite_set_dx(result.foreground, FOREGROUND_SCROLL_SPEED);
     sprite_start_animation(result.foreground, "Fire");
 
+    // sprite_set_x(result.foreground_purple, 0);
+    // sprite_set_y(result.foreground_purple, screen_height() - sprite_height(result.foreground_purple));
+    // sprite_set_dx(result.foreground_purple, FOREGROUND_SCROLL_SPEED);
+    // sprite_start_animation(result.foreground_purple, "Fire");
+    
     result.foreroof = create_sprite(bitmap_named("Foreroof"));
 
     sprite_set_x(result.foreroof, 0);
@@ -112,10 +126,11 @@ player_data get_new_player()
 game_data set_up_game()
 {
     game_data result;
+    result.color = PURPLE;
 
     load_resource_bundle("CaveEscape", "cave_escape.txt");
 
-    result.scene = get_new_scene();
+    result.scene = get_new_scene(result.color);
 
     for (int i = 0; i < NUM_POLES; ++i)
     {
@@ -149,18 +164,28 @@ void check_for_collisions(game_data &game)
     }
 }
 
-void handle_input(player_data &player)
+void handle_input(game_data &game)
 {
     if (key_typed(SPACE_KEY))
     {
-        if (player.state == PLAY)
+        if (game.player.state == PLAY)
         {
-            sprite_set_dy(player.sprite_data, sprite_dy(player.sprite_data) - JUMP_RECOVERY_BOOST);
+            sprite_set_dy(game.player.sprite_data, sprite_dy(game.player.sprite_data) - JUMP_RECOVERY_BOOST);
         }
         else
         {
-            player.state = PLAY;
+            game.player.state = PLAY;
         }
+    }
+    if (key_typed(NUM_0_KEY))
+    {
+        game.color = PURPLE;
+        game.scene.foreground = create_sprite(bitmap_named("ForegroundPurple"), animation_script_named("ForegroundAnimations"));
+    } 
+    if (key_typed(NUM_1_KEY))
+    {
+        game.color = ORANGE;
+        game.scene.foreground = create_sprite(bitmap_named("Foreground"), animation_script_named("ForegroundAnimations"));
     }
 }
 
@@ -261,7 +286,8 @@ void update_game(game_data &game)
     if (!game.player.is_dead)
     {
         check_for_collisions(game);
-        handle_input(game.player);
+        handle_input(game);
+        write_line(game.color);
         update_scene(game.scene);
         update_player(game.player);
 
@@ -300,6 +326,8 @@ void draw_game(game_data &game)
     draw_pole_array(game.poles);
     draw_sprite(game.scene.foreroof);
     draw_sprite(game.scene.foreground);
+
+
     draw_sprite(game.player.sprite_data);
 
     if (game.player.state == PLAY)
@@ -333,7 +361,7 @@ int main()
         draw_game(game);
 
         // Post-Draw
-        refresh_screen();
+        refresh_screen(60);
     } while (!window_close_requested("Cave Escape"));
 
     // Cleanup
