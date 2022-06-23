@@ -1,0 +1,51 @@
+{
+  "title": "__Quick Instructions__",
+  "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/preperation.md",
+  "curr_url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/Documentation/curriculum.md",
+  "pages": [
+    {
+      "title": "1: Hello, Window",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration1.md"
+    },
+    {
+      "title": "2: Let's Draw",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration2.md"
+    },
+    {
+      "title": "3. Fly Time",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration3.md"
+    },
+    {
+      "title": "4. Take Control",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration4.md"
+    },
+    {
+      "title": "5. Shaping Up",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration5.md"
+    },
+    {
+      "title": "6. Loops",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration6.md"
+    },
+    {
+      "title": "7. More Poles",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration7.md"
+    },
+    {
+      "title": "8. Lookin' Good",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration8.md"
+    },
+    {
+      "title": "9. Music and a Score",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration9.md"
+    },
+    {
+      "title": "10. The Menu",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration10.md"
+    },
+    {
+      "title": "11. What next?",
+      "url": "https://raw.githubusercontent.com/itco-education/cave-escape/master/python-docs/iteration11.md"
+    }
+  ]
+}
